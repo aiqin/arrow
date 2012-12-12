@@ -1,0 +1,36 @@
+[
+    {
+        "settings": [ "master" ],
+        "name": "controllers",
+        "config": {
+            "baseUrl": "http://localhost:8000/inner.html?test=1"
+        },
+        "dataprovider" : {
+            "Test CRT Controller" : {
+                "group" : "func",
+                "params" :{
+                    "scenario": [
+                            {
+                                "page" : "$$config.baseUrl$$"
+                            },
+                            {
+                                "controller": "crt",
+                                "params" : {
+                                    "value" : "testlink",
+                                    "click" : true
+                                }
+                            },
+                            {
+                                "test": "shanghai-func.js",
+                                "h1Value": "hello from foo!",
+                                "linkValue": "Inner page"
+                            }
+                    ]
+                }
+            }
+        }
+    },
+    {
+        "settings": [ "environment:development" ]
+    }
+]

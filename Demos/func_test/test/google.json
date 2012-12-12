@@ -1,0 +1,42 @@
+[
+{
+    "settings": [ "master" ],
+        "name" : "Search",
+        "config" : {
+            "baseUrl" : "http://www.google.com"
+        },
+        "dataprovider" : {
+            "login" : {
+                "params" : {
+                    "scenario": [
+                    {
+                        "page" : "$$config.baseUrl$$"
+                    },
+                    {
+                        "controller": "locator",
+                        "params": {
+                            "value": "#gbqfq",
+                            "text": "arrow"
+                        }
+                    },
+                    {
+                        "controller": "locator",
+                        "params": { 
+                            "value": "#gbqfb",
+                            "click": true
+                        }
+                    },
+                    {
+                        "test": "login.js"
+                    }
+                    ]
+                },
+                "group" : "smoke"
+            }
+        }
+},
+{
+    "settings": [ "environment:development" ]
+}
+]
+

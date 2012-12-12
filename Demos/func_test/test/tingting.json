@@ -1,0 +1,35 @@
+[
+{
+    "settings": [ "master" ],
+        "name" : "Search",
+        "config" : {
+            "baseUrl" : "http://www.yahoo.com"
+        },
+        "dataprovider" : {
+            "login" : {
+                "params" : {
+                    "scenario": [
+                    {
+                        "page" : "$$config.baseUrl$$"
+                    },
+                    {
+                        "controller": "locator",
+                        "params": {
+                            "value": "#p_13838465-p",
+                            "text": "arrow"
+                        }
+                    },
+                    {
+                        "test": "login.js"
+                    }
+                    ]
+                },
+                "group" : "smoke"
+            }
+        }
+},
+{
+    "settings": [ "environment:development" ]
+}
+]
+
