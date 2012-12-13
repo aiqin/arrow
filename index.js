@@ -46,6 +46,7 @@ var knownOpts = {
         "dimensions": [String, null],
         "capabilities": [String, null],
         "seleniumHost": [String, null],
+        "crtTestServer" : [String, null],
         "exitCode": Boolean
     },
     shortHands = {},
@@ -95,6 +96,7 @@ function showHelp() {
         "        --dimensions : (optional) a custom dimension file for defining ycb contexts" + "\n\n" +
         "        --context : (optional) name of ycb context" + "\n\n" +
         "        --seleniumHost : (optional) override selenium host url (example: --seleniumHost=http://host.com:port/wd/hub)" + "\n\n" +
+        "        --crtTestServer : (optional) override crtTestServer host url (example: --crtTestServer=http://host.com:port/shanghai)" + "\n\n" +
         "        --capabilities : (optional) the name of a json file containing webdriver capabilities required by your project" +
         "        --startProxyServer : (optional) true/false. Starts a proxy server for all intercepting all selenium browser calls" +
         "        --routerProxyConfig : (optional) filePath. Expects a Json file containing key-value pair, where key = original host, and value = new routed host." + + "\n" +
@@ -116,7 +118,9 @@ function showHelp() {
         "        Integration test: " + "\n" +
         "          arrow test-int.js --page=http://www.hostname.com/testpage --lib=./test-lib.js --driver=selenium" + "\n\n" +
         "        Custom controller: " + "\n" +
-        "          arrow --controller=custom-controller.js --driver=selenium");
+        "          arrow --controller=custom-controller.js --driver=selenium" + "\n\n" +
+        "        Function test with crt web driver: \n" +
+        "          arrow crt_descriptor.json --driver=crt" + "\n\n");
 }
 
 if (argv.help) {
