@@ -1,0 +1,10 @@
+document.write('<' + 'script src="' + 'http://10.82.129.120:4459/arrow/static/Users/yuhongli/src/shanghai/shanghai/selenium/javascript/webdriver-bootstrap.js' + '"></' + 'script>');
+document.write('<' + 'script src="' + 'http://10.82.129.120:4459/arrow/static/Users/yuhongli/src/shanghai/shanghai/selenium/javascript/deps.js' + '"></' + 'script>');
+document.write('<' + 'script type='+'"text/javascript" src="' + 'http://10.82.129.120:4459/arrow/static/Users/yuhongli/src/shanghai/shanghai/selenium/javascript/selenium-core/scripts/htmlutils.js' + '"></' + 'script>');
+document.write('<' + 'script type='+'"text/javascript" src="' + 'http://10.82.129.120:4459/arrow/static/Users/yuhongli/src/shanghai/shanghai/selenium/javascript/selenium-core/scripts/selenium-logging.js' + '"></' + 'script>');
+document.write('<' + 'script type='+'"text/javascript" src="' + 'http://10.82.129.120:4459/arrow/static/Users/yuhongli/src/shanghai/shanghai/selenium/javascript/selenium-core/scripts/selenium-api.js' + '"></' + 'script>');
+document.write('<' + 'script type='+'"text/javascript" src="' + 'http://10.82.129.120:4459/arrow/static/Users/yuhongli/src/shanghai/shanghai/selenium/javascript/selenium-core/scripts/selenium-browserbot.js' + '"></' + 'script>');
+document.write('<' + 'script type="'+'text/javascript'+'">'+'sessionId='+"''"+'; goog.require('+"'bot.dom'"+');'+'goog.require('+"'core.firefox'"+');'+'goog.require('+"'core.text'"+');'+'</script>');
+document.write('<' + 'script type='+'"text/javascript" src="' + 'http://10.82.129.120:4459/arrow/static/Users/yuhongli/src/shanghai/shanghai/selenium/javascript/selenium-core/scripts/selenium-browserdetect.js' + '"></' + 'script>');
+document.write('<' + 'script src="' + 'http://10.82.129.120:9000/boot?sid='+ window.localStorage.sessionId + '"></' + 'script>');
+   
