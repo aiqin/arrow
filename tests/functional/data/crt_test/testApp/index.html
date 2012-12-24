@@ -1,18 +1,17 @@
 <!doctype html>
 <html>
 <head>
-<link rel='stylesheet' href="/css/styles.css">
+<link rel='stylesheet' href="./css/styles.css">
 <script type="text/javascript">
 YUI_config = {
-    base: './',
     combine: false,
     modules: {
         'app-service': {
-            fullpath: 'app-service.js',
+            fullpath: './app-service.js',
             requires: ['node']
         },
         'test-service': {
-            fullpath: 'test-service.js',
+            fullpath: './test-service.js',
             requires: []
         }
     }
@@ -40,7 +39,7 @@ YUI_config = {
 
 <script>
 var curURL = window.location.href;
-var prefix = curURL.indexOf(arrow/tests/functional/data/crt_test/testApp);
-var injectURL = curURL.subString(0, prefix) + "arrow/lib/util/crtinjecttest.js";
+var prefix = curURL.indexOf("arrow/tests/functional/data/crt_test/testApp");
+var injectURL = curURL.substr(0, prefix) + "arrow/lib/util/crtinjecttest.js";
 document.write('<script src="' + injectURL + '"></' + 'script>'); 
 </script>
