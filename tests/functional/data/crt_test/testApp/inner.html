@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+    <link rel='stylesheet' href="/css/styles.css">
+    <script type="text/javascript">
+        var LEADING = '/v2';
+
+        YUI_config = {
+            base: '/',
+            combine: false,
+            modules: {
+                'app-service': {
+                    fullpath: 'app-service.js',
+                    requires: ['node']
+                },
+                'test-service': {
+                    fullpath: 'test-service.js',
+                    requires: []
+                }
+            }
+        };
+    </script>
+    <script src='http://yui.yahooapis.com/3.8.0/build/yui/yui-min.js'></script>
+</head>
+<body class='yui3-skin-sam'>
+<h1>Hello inner page</h1>
+<p>Mode: <b id='mode'>production</b></p>
+
+<a href='/?test=1' id=testlink>Back to main page</a> 
+
+</body>
+</html>
+<script src="http://10.82.140.140:4459/arrow/static/node_modules/node_modules/arrow/lib/util/selenium/injectTest.js"></script>
+<!-- <script>
+    if (self.location.href.match(/test/)) {
+        document.write('<' + 'script src="' + 'http://localhost:9000/boot' + '"></' + 'script>');
+        document.write('<' + 'script >document.getElementById("mode").innerHTML="Test";</' + 'script>');
+    }
+</script> -->
