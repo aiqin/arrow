@@ -12,13 +12,8 @@ crtWebdriver.prototype.buildWebDriver = function (sid, callback)
 {
  var self = this;
  self.sessionId=sid;
- this.controller = this.createController(); 
- this.controller.connect();
- this.actions = [];
- this.controller.on('local.ready', function() {
-    callback();
- });
-           
+ 
+ callback("create webdriver successfully");
 }
 
 crtWebdriver.prototype.createController = function () {
@@ -29,11 +24,8 @@ crtWebdriver.prototype.createController = function () {
     return new shanghaiController({baseUrl: baseurl, nodebug:!debug});
 }
 
-crtWebdriver.prototype.quit = function (controller) {
-    if (this.controller) {
-        this.controller.close();
-        this.logger.info("closing the controller");
-    }
+crtWebdriver.prototype.quit = function (callback) {
+    callback("quit from webdriver successfully");
 }
 crtWebdriver.prototype.executeScript = function (script, callback) {
     this.controller.execute(this.sessionId, script, callback);

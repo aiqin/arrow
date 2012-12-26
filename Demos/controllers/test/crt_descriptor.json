@@ -3,7 +3,7 @@
         "settings": [ "master" ],
         "name": "controllers",
         "config": {
-            "baseUrl": "http://localhost:8000/inner.html?test=1"
+            "baseUrl": "http://localhost:4459/arrow/static/Users/aiqin/github/local/aiqin/arrow/tests/functional/data/crt_test/testApp/inner.html?test=1"
         },
         "dataprovider" : {
             "Test CRT Controller" : {
@@ -26,7 +26,7 @@
                                 "linkValue": "Inner page"
                             }
                     ]
-                }
+            }
             }
         }
     },
