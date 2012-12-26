@@ -1,0 +1,39 @@
+[
+    {
+        "settings": [ "master" ],
+        "name": "controllers",
+        "config": {
+            "baseUrl": "http://localhost:4459/arrow/static/Users/yuhongli/src/arrowdev/arrow/tests/functional/data/crt_test/testApp"
+        },
+        "dataprovider" : {
+            "Test CRT Controller" : {
+                "group" : "func",
+                "params" :{
+                 "scenario": [
+                            {
+                                "page" : "$$config.baseUrl$$/index.html?test=1"
+                            },
+                            {
+                                "controller": "crt",
+                                "params" : {
+                                    "using" : "xpath",
+                                    "value" : "//input[@id='text1']",
+                                    "text": "haham h"
+                                    
+                                }
+                            },
+                            {
+                                "test": "shanghai-func_text.js",
+                                "textValue": "haham h"
+                            }
+                    ]
+                   
+                }
+            }
+        }
+    },
+    {
+        "settings": [ "environment:development" ]
+    }
+]
+

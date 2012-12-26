@@ -1,0 +1,63 @@
+[
+    {
+        "settings": [ "master" ],
+        "name": "controllers",
+        "config": {
+            "baseUrl": "http://localhost:4459/arrow/static/Users/yuhongli/src/arrowdev/arrow/tests/functional/data/crt_test/testApp"
+        },
+        "dataprovider" : {
+            "Test CRT Controller" : {
+                "group" : "func",
+                "params" :{
+                 "scenario": [
+                            {
+                                "page" : "$$config.baseUrl$$/index.html?test=1"
+                            },
+                            {
+                                "controller": "crt",
+                                "params" : {
+                                    "using" : "link",
+                                    "value" : "Inner page",
+                                    "click" : true
+                                }
+                            },
+                            {
+                                "test": "shanghai-func.js",
+                                "h1Value": "Hello inner page",
+                                "linkValue": "Back to main page"
+                            }
+                    ]
+                   
+                }
+            },
+             "Test CRT Controller 2" : {
+                "group" : "func",
+                "params" :{
+                 "scenario": [
+                            {
+                                "page" : "$$config.baseUrl$$/inner.html?test=1"
+                            },
+                            {
+                                "controller": "crt",
+                                "params" : {
+                                    "using" : "xpath",
+                                    "value" : "//a[@id='testlink']",
+                                    "click" : true
+                                }
+                            },
+                            {
+                                "test": "shanghai-func.js",
+                                "h1Value": "hello from foo!",
+                                "linkValue": "Inner page"
+                            }
+                    ]
+                   
+                }
+            }
+        }
+    },
+    {
+        "settings": [ "environment:development" ]
+    }
+]
+
