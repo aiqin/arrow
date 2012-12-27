@@ -34,6 +34,7 @@ crtWebdriver.prototype.executeScript = function (script, callback) {
 crtWebdriver.prototype.navigate = function (url, callback) {
     // this.controller.navigate(this.sessionId, url, callback);
     this.actions.push({"name": "navigate","sessionId":this.sessionId, "url":url, "callback":callback});
+    callback({});
 }
 
 crtWebdriver.prototype.clickAndStay = function (locator, callback,errcallback) {

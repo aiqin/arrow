@@ -27,8 +27,23 @@ YUI.add('crt-tests', function (Y, NAME) {
                 action : arrowRoot + '/lib/client/qunit-runner.js'
             };
 
+        function createDriverJs_false (testParams, callback) {
+            return false;
+        }
+
+        function createDriverJs_true (testParams, callback) {
+            return true;
+        }
+
+        function getCrtUrl_false(url) {
+            return false;
+        }
+
+        function getCrtUrl_true(url) {
+            return true;
+        } 
         suite.add(new Y.Test.Case({
-/*                'test start function when crtTestServer is not set' : function () {
+                'test start function when crtTestServer is not set' : function () {
                        var driver, config,start;
 
                        config = {};
@@ -404,16 +419,12 @@ YUI.add('crt-tests', function (Y, NAME) {
                               "ARROW.onSeeded = function() { " + runnerJs + " };" + seedJs;
 
                           Y.Assert.areEqual(result, expectResult);
-                          },*/
+                          },
 
                       'test navigate when the web view url is not correct' : function () {
                          var driver = new driverClass({},{}), called = false;
 
-                         function getCrtUrl(url) {
-                             return false;
-                         } 
-
-                         driver.getCrtUrl = getCrtUrl;
+                         driver.getCrtUrl = getCrtUrl_false;
                          driver.navigate("testcrturl", function (msg) {
                                     called = true;
                                     Y.Assert.areEqual(msg, "Cannot load web view: testcrturl");
@@ -423,12 +434,7 @@ YUI.add('crt-tests', function (Y, NAME) {
 
                      'test navigate when the web view url is correct' : function () {
                          var driver = new driverClass({crtTestServer: "http://localhost:9000/shanghai"},{}), called = false;
-
-                         function getCrtUrl(url) {
-                             return true;
-                         } 
-
-                         driver.getCrtUrl = getCrtUrl;
+                         driver.getCrtUrl = getCrtUrl_true;
                          driver.start(function(msg){ 
                                  Y.Assert.areEqual(msg, "create webdriver successfully");
                                  });
@@ -448,17 +454,390 @@ YUI.add('crt-tests', function (Y, NAME) {
 
                          called = false;
                          driver.webdriver.navigate = webdriver_navigate;
-                         driver.naviage("testcrturl", function (msg) {
+                         driver.navigate("testcrturl", function (msg) {
                                  called = true;
                                  Y.Assert.areEqual(msg, "faked navigate");
                                  });
+                         Y.Assert.isTrue(called);
                      },
 
-/*                     'test navigate' : function () {
-                                               },
+                     'test executeTest when createDriverJs return false' : function () {
+                         var driver = new driverClass({crtTestServer: "http://localhost:9000/shanghai"},{});
+                         var called = false;
 
-                     'test navigate' : function () {
-                                               },*/
+                         driver.createDriverJs = createDriverJs_false;
+                         driver.executeTest(correctConfig, correctTestParams, function () {
+                                 called = true;
+                                 });
+
+                         Y.Assert.isFalse(called);
+                       },
+
+                     'test executeTest when test is html file and the url is false' : function () {
+                          var testParams = {
+                                test: arrowRoot + '/lib/client/testHost.html',
+                                lib: arrowRoot + '/lib/common/yui-arrow.js'
+                          };
+                          var driver = new driverClass(correctConfig, testParams);
+                          driver.createDriverJs = createDriverJs_true;
+                          driver.getCrtUrl = getCrtUrl_false;
+
+                          driver.executeTest(correctConfig, testParams, function(msg){
+                                  called = true;
+                                  Y.Assert.areEqual(msg, "Cannot load the crt web view: " + arrowRoot + '/lib/client/testHost.html');
+                                  });
+
+                          Y.Assert.isTrue(called);
+                      },
+
+                     'test executeTest when there is correct page in test parameter while webdriver return false' : function () {
+                         var testParams = {
+                            page: arrowRoot + '/lib/client/crtTestHost.html', 
+                         }
+                         var driver = new driverClass({crtTestServer:"http://localhost:9000/shanghai"}, testParams);
+                         var called = false;
+
+                         driver.createDriverJs = createDriverJs_true;
+                         driver.getCrtUrl = getCrtUrl_true;
+                         driver.start(function(msg){
+                                    Y.Assert.areEqual(msg, "create webdriver successfully");
+                                    called = true;
+                                 })
+                         Y.Assert.isTrue(called);
+                         called = false;
+
+                         function navigate(url, callback){
+                             var response = {error: 'test error'};
+                             callback(response);
+                         }
+                         driver.webdriver.navigate = navigate;
+                         driver.executeTest(correctConfig, testParams, function (msg) {
+                                 called = true;
+                                 Y.Assert.areEqual(msg, "test error");
+                                 });
+                         Y.Assert.isTrue(called);
+                     },
+
+                     'test executeTest when there is correct page and the response report is {}' : function () {
+                         var testParams = {
+                                test: "test.js",
+                                page: arrowRoot + '/lib/client/crtTestHost.html'
+                         }
+                         var driver = new driverClass({crtTestServer:"http://localhost:9000/shanghai"}, testParams);
+                         var called = false;
+
+                         driver.createDriverJs = createDriverJs_true;
+                         driver.getCrtUrl = getCrtUrl_true;
+                         driver.start(function(msg){
+                                 Y.Assert.areEqual(msg, "create webdriver successfully");
+                                 called = true;
+                                 })
+                         Y.Assert.isTrue(called);
+                         called = false;
+
+                         function executeScript(code, callback) {
+                             var response = {};
+                             response.report = {};
+                             response.cLog = "test client console log";
+                             callback(response);
+                         } 
+
+                         driver.webdriver.executeScript = executeScript;
+                         driver.executeTest(correctConfig, testParams, function (msg) {
+                                 called = true;
+                                 Y.Assert.areEqual(msg, "invalid YUI test file: test.js");
+                                 });
+                         Y.Assert.isTrue(called);
+                     },
+
+                    'test executeTest when there is correct page and the response report is null' : function () {
+                        var testParams = {
+                              test: "test.js",
+                              page: arrowRoot + '/lib/client/crtTestHost.html'
+                        }
+                        var driver = new driverClass({crtTestServer:"http://localhost:9000/shanghai"}, testParams);
+                        var called = false;
+
+                        driver.createDriverJs = createDriverJs_true;
+                        driver.getCrtUrl = getCrtUrl_true;
+                        driver.start(function(msg){
+                                Y.Assert.areEqual(msg, "create webdriver successfully");
+                                called = true;
+                                })
+                        Y.Assert.isTrue(called);
+                        called = false;
+
+                        function executeScript(code, callback) {
+                            var response = {};
+                            callback(response);
+                        } 
+
+                        driver.webdriver.executeScript = executeScript;
+                        driver.executeTest(correctConfig, testParams, function (msg) {
+                                called = true;
+                                Y.Assert.areEqual(msg, "Failed to collect the test report");
+                        });
+                        Y.Assert.isTrue(called);
+                    },
+
+                    'test executeTest when there is correct page and webdriver returns the correct report' : function () {
+                        var testParams = {
+                                test: "test.js",
+                                page: arrowRoot + '/lib/client/crtTestHost.html'
+                        }
+                        var driver = new driverClass({crtTestServer:"http://localhost:9000/shanghai"}, testParams);
+                        var called = false;
+
+                        driver.createDriverJs = createDriverJs_true;
+                        driver.getCrtUrl = getCrtUrl_true;
+                        driver.start(function(msg){
+                                Y.Assert.areEqual(msg, "create webdriver successfully");
+                                called = true;
+                                })
+                        Y.Assert.isTrue(called);
+                        called = false;
+
+                        function executeScript(code, callback) {
+                            var response = {report: "test report"};
+                            callback(response);
+                        } 
+
+                        function addReport(report, caps) {
+                            return true;
+                        }
+
+                        driver.webdriver.executeScript = executeScript;
+                        driver.addReport = addReport;
+                        driver.executeTest(correctConfig, testParams, function (err, report) {
+                                called = true;
+                                Y.Assert.areEqual(report, "test report");
+                                });
+                        Y.Assert.isTrue(called);
+                    },
+
+                     'test executeTest when there is correct page and webdriver returns the correct report with minifyJS = true' : function () {
+                         var testParams = { 
+                                test: "test.js",
+                                page: arrowRoot + '/lib/client/crtTestHost.html'
+                         }   
+                         var driver = new driverClass({crtTestServer:"http://localhost:9000/shanghai"}, testParams);
+                         var called = false, minJS = null;
+
+                         function createDriverJs(code, callback){
+                             var code = "for (var i = 1; i < 10; ++i) { \n" +
+                                        "var boo = 1;\n" + 
+                                        "}\n" +
+                                        "for (var i = 0; i < 1; ++i) {\n" +
+                                        "var boo = 2;\n" +
+                                        "}\n";
+                             return code;
+                         }
+                         driver.createDriverJs = createDriverJs;
+                         driver.getCrtUrl = getCrtUrl_true;
+
+                         driver.start(function(msg){
+                                 Y.Assert.areEqual(msg, "create webdriver successfully");
+                                 called = true;
+                                 })  
+                         Y.Assert.isTrue(called);
+                         called = false;
+
+                         function executeScript(code, callback) {
+                             if (!minJS) {
+                                 minJS = code;
+                             }
+
+                             var response = {report: "test report"};
+                             callback(response);
+                         }   
+
+                         function addReport(report, caps) {
+                             return true;
+                         }   
+
+                         driver.webdriver.executeScript = executeScript;
+                         driver.addReport = addReport;
+                         driver.minifyJS = true;
+                         driver.executeTest(correctConfig, testParams, function (err, report) {
+                                 called = true;
+                                 Y.Assert.areEqual(report, "test report");
+                                 }); 
+                         Y.Assert.isTrue(called);
+                         Y.Assert.areEqual(minJS, "for(var i=1;i<10;++i)var boo=1;for(var i=0;i<1;++i)var boo=2");
+                     },  
+
+
+                    'test executeTest when there is no page with coverage' : function () {
+                        var testParams = {
+                                test: "test.js",
+                        },
+                        coverageConfig = {
+                            crtTestServer : 'http://localhost:9000/shanghai',
+                            coverage : true
+                        };
+
+                        var driver = new driverClass(coverageConfig, testParams);
+                        var called = false, getCoverage = false;
+
+                        driver.createDriverJs = createDriverJs_true;
+                        driver.getCrtUrl = getCrtUrl_true;                                                                
+                        driver.start(function(msg){
+                                Y.Assert.areEqual(msg, "create webdriver successfully");
+                                called = true;
+                                })
+                        Y.Assert.isTrue(called);
+                        called = false;
+
+                        function executeScript(code, callback) {
+                            var response = {
+                                   report: "test report with coverage",
+                                   cov : "test coverage"
+                            };
+                                    
+                            callback(response);
+                        } 
+
+                        function addReport(report, caps) {
+                            return true; 
+                        }   
+
+                        function addCoverage(coverage) {
+                            getCoverage = true;
+                            return true;
+                        }
+
+                        driver.webdriver.executeScript = executeScript;
+                        driver.addReport = addReport;
+                        driver.coverage = require(arrowRoot + '/lib/util/coverage');
+                        driver.coverage.addCoverage = addCoverage;
+                        driver.executeTest(coverageConfig, testParams, function (err, report) {
+                                called = true;
+                                Y.Assert.areEqual(report, "test report with coverage");
+                                });
+                        Y.Assert.isTrue(called);
+                        Y.Assert.isTrue(getCoverage);
+                    },
+
+             'test executeTest when testParams.lib=false, args.params.lib=true' : function () {
+                 var testParams = {
+                        test: "test.js",
+                 },
+                 
+                 config = {
+                        crtTestServer : 'http://localhost:9000/shanghai'
+                 },
+                 args = {
+                        params : {
+                            lib: 'args.params.lib'
+                                 }
+                 };
+
+                 var driver = new driverClass(config, args);
+                 var called = false, lib ="";
+
+                 function createDriverJs (testParams, callback) {
+                     lib = testParams.lib;
+                     return false;
+                 }
+                 driver.createDriverJs = createDriverJs;
+                 driver.executeTest(correctConfig, testParams, function(){
+                         called = true;
+                         });
+
+                 Y.Assert.isFalse(called);
+                 Y.Assert.areEqual(lib, "args.params.lib");
+             },
+
+             'test executeTest when testParams.lib=true, or args.params=false or args.params.lib=false' : function () {
+                 var testParams = { 
+                        test: "test.js",
+                        lib : "testParams.lib"
+                 },                               
+                 config = {
+                        crtTestServer : 'http://localhost:9000/shanghai'
+                 },
+                 args = {                   
+                    params : {
+                        lib: 'args.params.lib'
+                         }
+                 };         
+
+                 var driver = new driverClass(config, args);
+                 var called = false, lib ="";
+
+                 function createDriverJs (testParams, callback) {
+                     lib = testParams.lib;
+                     return false;
+                 }
+                 driver.createDriverJs = createDriverJs;
+
+                 //testParams.lib = true;
+                 driver.executeTest(correctConfig, testParams, function(){
+                         called = true;
+                         });
+
+                 Y.Assert.isFalse(called);
+                 Y.Assert.areEqual(lib, "testParams.lib");
+
+                 //args.params = false;
+                 driver = new driverClass(config, {});
+                 driver.createDriverJs = createDriverJs;
+                 driver.executeTest(correctConfig, {test : 'test.js'}, function(){
+                         called = true;
+                         });
+                 Y.Assert.isFalse(called);
+                 Y.Assert.areEqual(lib, undefined);
+
+                 //args.params.lib=false;
+                 driver = new driverClass(config, {params : {}});
+                 driver.createDriverJs = createDriverJs;
+                 driver.executeTest(correctConfig, {test : 'test.js' }, function() {
+                         called = true;
+                         });
+                 Y.Assert.isFalse(called);
+                 Y.Assert.areEqual(lib, undefined);
+             },
+             
+             'test getCrtUrl when the url is a valid crt app' : function(){
+                 var driver = new driverClass({},{}), result = "";
+                
+                 var url =  "crt://yahoo.com/yahoo.someapp"; 
+                 result = driver.getCrtUrl(url);
+                 Y.Assert.areEqual(result, url);
+             },
+
+             'test getCrtUrl when the url is the default app url' : function(){
+                 var driver = new driverClass({},{}), result = "";
+                
+                 var url = "lib/client/crtTestHost.html";
+                 function getArrowServerBase_true() {
+                     return "http://arrowhost:port/arrow/static/";
+                 }
+                 
+                 function getArrowServerBase_false() {
+                     return false;
+                 }
+                 driver.getArrowServerBase = getArrowServerBase_true;
+                 result = driver.getCrtUrl(url);
+                 Y.Assert.areEqual(result, "http://arrowhost:port/arrow/static/" + url);
+
+                 driver.getArrowServerBase = getArrowServerBase_false;
+                 result = driver.getCrtUrl(url);
+                 Y.Assert.isFalse(result);
+
+             },
+             'test getCrtUrl when the url is a valid http url for browser test' : function(){
+                 var driver = new driverClass({},{}), result = "";
+
+                 result = driver.getCrtUrl("http://testpage");
+                 Y.Assert.areEqual(result, "http://testpage");
+             },
+
+             'test getCrtUrl when the url is a not acceptable url' : function(){
+                 var driver = new driverClass({},{}), result = "";
+                 result = driver.getCrtUrl("anyurl");
+                 Y.Assert.isFalse(result);
+             }
         }));
 
         Y.Test.Runner.add(suite);
