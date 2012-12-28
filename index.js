@@ -80,7 +80,6 @@ function showHelp() {
         "        --page : (optional) path to the mock or production html page" + "\n" +
         "                   example: http://www.yahoo.com or mock.html" + "\n\n" +
         "        --driver : (optional) one of selenium|nodejs. (default: selenium)" + "\n\n" +
-        "        --descriptor : (optional) glob/path for descriptor(s). (example: **/*descriptor.json)" + "\n\n" +
         "        --browser : (optional) a comma seperated list of browser names, optionally with a hypenated version number.\n" +
         "                      Example : 'firefox-12.0,chrome-10.0' or 'firefox,chrome' or 'firefox'. (default: firefox)" + "\n\n" +
         "        --parallel : (optional) test thread count. Determines how many tests to run in parallel for current session. (default: 1)\n" +
@@ -99,11 +98,32 @@ function showHelp() {
         "        --crtTestServer : (optional) override crtTestServer host url (example: --crtTestServer=http://host.com:port/shanghai)" + "\n\n" +
         "        --capabilities : (optional) the name of a json file containing webdriver capabilities required by your project" +
         "        --startProxyServer : (optional) true/false. Starts a proxy server for all intercepting all selenium browser calls" +
-        "        --routerProxyConfig : (optional) filePath. Expects a Json file containing key-value pair, where key = original host, and value = new routed host." + + "\n" +
+        "        --routerProxyConfig : (optional) filePath. Expects a Json file, allows users to modify host and headers for all calls being made by browser. Also supports recording of select url calls." + "\n" +
         "                       Example Json :" + "\n" +
-        "                       {\"yahoo.com\" : \"1.2.3.4\", \"sports.yahoo.com\" : \"3.4.5.6\"}" + "\n" +
-        "        --useProxyForAll : (optional) true/false. ( default : true ) decides if all selenium browser should by default use proxy server or not" +
+        "                       {" + "\n" +
+        "                           \"yahoo.com\": {" + "\n" +
+        "                               \"newHost\": \"x.x.x.x (your new host ip/name)\"," + "\n" +
+        "                               \"headers\": [" + "\n" +
+        "                                   {" + "\n" +
+        "                                       \"param\": \"<param>\"," + "\n" +
+        "                                       \"value\": \"<val>\"" + "\n" +
+        "                                   }" + "\n" +
+        "                               ]," + "\n" +
+        "                               \"record\": true" + "\n" +
+        "                           }," + "\n" +
+        "                           \"news.yahoo.com\": {" + "\n" +
+        "                               \"newHost\": \"x.x.x.x (your new host ip/name)\"," + "\n" +
+        "                               \"headers\": [" + "\n" +
+        "                                   {" + "\n" +
+        "                                       \"param\": \"<param>\"," + "\n" +
+        "                                       \"value\": \"<val>\"" + "\n" +
+        "                                   }" + "\n" +
+        "                               ]," + "\n" +
+        "                               \"record\": true" + "\n" +
+        "                           }" + "\n" +
+        "                      }" + "\n" +
         "        --exitCode : (optional) true/false. Causes the exit code to be non-zero if any tests fail (default: false)" + "\n" +
+        "        --coverage : (optional) true/false. creates code-coverage report for all js files included/loaded by arrow (default: false)" + "\n" +
         "        \n\n");
 
     console.log("\nEXAMPLES :" + "\n" +
