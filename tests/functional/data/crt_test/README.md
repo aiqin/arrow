@@ -4,3 +4,6 @@ If you want to run test for app in emulator,
 
 If you want to run test for app in browser,
  - update 'baseurl' in *descriptor*.json with format like 'http://localhost:10000/arrow/static/{file path}', this uses arrow server to load app.
+
+#How to updadate the baseurl
+run "./replaceUrl.js --url=<your url>" to replace all the url in the *descriptor*.json file
