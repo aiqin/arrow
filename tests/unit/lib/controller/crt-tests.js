@@ -14,7 +14,9 @@ YUI.add('crt-tests', function(Y, NAME) {
     function validateLocator(sessionId, params) {
         var wasCalled = false, config = {}, wdApp = new StubWdApp(), driver = new StubDriver(), crt;
         driver.webdriver = new StubWdApp(self.config);
-        driver.webdriver.buildWebDriver(sessionId);
+        driver.webdriver.buildWebDriver(sessionId, function(msg){
+            console.log(msg);
+        });
         crt = new crtController(config, params, driver);
         crt.execute(function(msg) {
             if (msg === null) {
