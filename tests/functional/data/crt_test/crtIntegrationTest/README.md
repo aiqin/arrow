@@ -11,10 +11,11 @@
 * How to run the integration test
     1. run the command: android create avd -f -n "crt_arrow" -t android-14 -c 512M
     2. run the command: "emulator -avd crt_arrow" to bring up the simulator.
-    3. copy index.html, runcmd, integration-test.js, single.bridgebenchmark.js, to the folder: {gitbase}/core/android/test/SmokeTest/asserts/packages/yahoo.application.ychromertApp
-    4. at folder {gitbase}/core/android/test/, run "deploy-debug" to deploy the app to the simulator
-    5. find the app on the simulator, click the app to launch it.
-    6. run ./runcmd to launch the integration test with arrow
+    3. run "./replaceUrl" to modify the hardcoded urls
+    4. copy index.html, runcmd, integration-test.js, single.bridgebenchmark.js, to the folder: {gitbase}/core/android/test/SmokeTest/assets/packages/yahoo.application.ychromertApp
+    5. at folder {gitbase}/core/android/test/, run "deploy-debug" to deploy the app to the simulator
+    6. find the app on the simulator, click the app to launch it.
+    7. run ./runcmd to launch the integration test with arrow
 
 * Notes
     1. change the content in {gitbase}/core/android/test/SmokeTest/asserts/packages/yahoo.application.ychromertApp and redeploy the app will change the app content.

@@ -4,15 +4,7 @@ arrowLink=`ls -lrt $arrowPath | awk -F"->" '{print $2}'`;
 arrowStatus=${arrowLink/index.js/tmp/arrow_server.status};
 prefix=`cat $arrowStatus`;
 
-currentPath=`pwd`;
-arrowRoot=${currentPath/tests?functional*/lib/util/crtinjecttest.js};
-fullpath=$prefix"/arrow/static"$arrowRoot;
-replacedfullpath=${fullpath//\//\\/};
-
-`sed -i -e "s/http:.*crtinjecttest.js/$replacedfullpath/g" index.html`;
-echo "the fullpath of crtinjecttest.js is $fullpath";
-
-crtTestServer=${prefix/%:????/:9000/shanghai};
+crtTestServer=${prefix/%:?????/:9000/shanghai};
 echo "crtTestServer is $crtTestServer";
 
 arrow integration-test.js  --driver=crt --crtTestServer=$crtTestServer --page=crt://yahoo.com/yahoo.application.ychromertApp/index.html --logLevel=trace

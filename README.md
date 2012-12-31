@@ -132,3 +132,23 @@ Apart from above mentioned npm modules, Arrow also relies on these two projects
 
 * **selenium** https://code.google.com/p/selenium/
 * **ghostdriver** https://github.com/detro/ghostdriver
+
+#For Arrow Developers
+1. install the arrow globle "sudo npm install yahoo-arrow -g" 
+2. clone the recent code to your local directory "git clone git@github.com:aiqin/arrow.git"
+3. set the connection between arrow/arrow_server/arrow_selenium with the recent code
+    sudo rm arrow
+    sudo rm arrow_server
+    sudo rm arrow_selenium
+    sudo ln -s /Users/aiqin/github/local/aiqin/arrow/index.js arrow
+    sudo ln -s /Users/aiqin/github/local/aiqin/arrow/arrow_server/server.js arrow_server
+    sudo ln -s /Users/aiqin/github/local/aiqin/arrow/arrow_selenium/selenium.js arrow_selenium
+4. on your git local repositry:
+    temp: run "sudo npm install shanghai -reg http://ynpm-registry.corp.yahoo.com:4080/" to get the shanghai dependency from yahoo internal npm 
+    run "npm install ." to install all the dependencies
+5. bring up the arrow_server by "arrow_server"
+6. install shanghai server by "sudo npm install shanghai-server -reg http://ynpm-registry.corp.yahoo.com:4080/"
+7. bring up the shanghai server by "cd ./node_modules/shanghai-server" and "node server.js --host=<your host ip address>"
+
+you can run your unit test/functional test/crt integration test according to the readme file
+
