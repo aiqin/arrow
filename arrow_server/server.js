@@ -61,6 +61,8 @@ if (parsed.help) {
 
 if (parsed["host"]) {
     arrowHost = parsed["host"];
+} else {
+    convertHostname();
 }
 
 if (parsed["port"]) {
@@ -574,6 +576,25 @@ function startGhostDriver() {
 
         }
     });
+}
+
+function convertHostname(){
+    var interfaces = os.networkInterfaces();
+
+    for ( netInterface  in interfaces){
+        var length = 'interfaces.' + netInterface + '.length';
+
+        for (var i = 0; i< eval(length); i ++) {
+            var isInternal = 'interfaces.' + netInterface + '[' + i + '].internal';
+            var ipFamily = 'interfaces.' + netInterface + '[' + i + '].family';
+            var ipAddress = 'interfaces.' + netInterface + '[' + i +  '].address';
+
+            if ((eval(isInternal) == false) && (eval(ipFamily) == "IPv4") && (arrowHost == "localhost" )){ 
+                arrowHost = eval(ipAddress);
+                return;
+            }   
+        }   
+    }   
 }
 
 function runArrowServer(port) {

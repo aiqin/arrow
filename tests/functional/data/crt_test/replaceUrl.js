@@ -12,7 +12,6 @@ var knownOpts = {
     shortHands = {};
 
 var argv = nopt(knownOpts, shortHands, process.argv, 2);
-//console.log("====the argv is =====" + util.inspect(argv));
 
 var currentUrl = "";
 if (argv.help){
