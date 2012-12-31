@@ -1,4 +1,3 @@
-
 var path = require('path'),
     fs = require('fs'),
     util = require('util'),
@@ -54,5 +53,5 @@ exec('sed -i -e "s/http:.*browserTestApp/\"${URL}\"/g" crt*.json', envObj, funct
     });
 
 function showHelp(){
-    console.log("The correct usage are: \n       './replaceUrl.js --help'\n or \n       './replaceUrl.js --url=exampleUrl'");
+    console.log("The correct usage are: \n       'node replaceUrl.js --help'\n or \n       'node replaceUrl.js --url=exampleUrl'");
 }
