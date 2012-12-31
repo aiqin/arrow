@@ -3,7 +3,7 @@
         "settings": [ "master" ],
         "name": "controllers",
         "config": {
-            "baseUrl": "http://localhost:4459/arrow/static/Users/yuhongli/src/arrowdev/arrow/tests/functional/data/crt_test/testApp"
+            "baseUrl": "crt://yahoo.com/yahoo.application.oo"
         },
         "dataprovider" : {
             "Test CRT Controller" : {
