@@ -43,7 +43,7 @@ var envObj = {};
 
 var exec = require('child_process').exec;
 
-exec('sed -i -e "s/http:.*browserTestApp/\"${URL}\"/g" crt*.json', envObj, function(error, stdout, stderr){
+exec('sed -i -e "s/http:.*testApp/\"${URL}\"/g" crt*.json', envObj, function(error, stdout, stderr){
         if (error) {
             console.log("===the error is ===" + error + "\n");
             console.log("replace the url failed, please replace them manually");
@@ -52,6 +52,11 @@ exec('sed -i -e "s/http:.*browserTestApp/\"${URL}\"/g" crt*.json', envObj, funct
         }
     });
 
+exec('rm  crt*.json-e', function(error, stdout, stderr) {
+        if (error) {
+           console.log("rm the temp files failed, please remove the temp files *.json-e manually");
+           }
+        });
 function showHelp(){
     console.log("The correct usage are: \n       'node replaceUrl.js --help'\n or \n       'node replaceUrl.js --url=exampleUrl'");
 }
