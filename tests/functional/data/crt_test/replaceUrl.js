@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 
 var path = require('path'),
     fs = require('fs'),
@@ -24,7 +23,7 @@ if (argv.help){
         console.log("warn: the default arrow url will be used");
         var serverStatus = path.join(__dirname, "../../../.." + "/tmp/arrow_server.status"),
                 defaultUrl = fs.readFileSync(serverStatus, "utf8");
-                    currentUrl = defaultUrl + "/arrow/static" + __dirname + "/testApp";
+                    currentUrl = defaultUrl + "/arrow/static" + __dirname + "/browserTestApp";
     } else {
        //use the user input one.
         currentUrl = argv.url;
@@ -33,7 +32,7 @@ if (argv.help){
         console.log("warn: the default arrow url will be used");
             var serverStatus = path.join(__dirname, "../../../.." + "/tmp/arrow_server.status"),
                                 defaultUrl = fs.readFileSync(serverStatus, "utf8");
-                                currentUrl = defaultUrl + "/arrow/static" + __dirname + "/testApp";
+                                currentUrl = defaultUrl + "/arrow/static" + __dirname + "/browserTestApp";
 }
 
 //console.log("==== the baseUrl to replace with is: " + currentUrl); 
@@ -46,7 +45,7 @@ var envObj = {};
 
 var exec = require('child_process').exec;
 
-exec('sed -i -e "s/http:.*testApp/\"${URL}\"/g" crt*.json', envObj, function(error, stdout, stderr){
+exec('sed -i -e "s/http:.*browserTestApp/\"${URL}\"/g" crt*.json', envObj, function(error, stdout, stderr){
         if (error) {
             console.log("===the error is ===" + error + "\n");
             console.log("replace the url failed, please replace them manually");
