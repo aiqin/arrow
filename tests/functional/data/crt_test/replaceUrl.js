@@ -43,7 +43,8 @@ var envObj = {};
 
 var exec = require('child_process').exec;
 
-exec('sed -i -e "s/http:.*testApp/\"${URL}\"/g" crt*.json', envObj, function(error, stdout, stderr){
+//"baseUrl": "http://localhost:4459/arrow/static/Users/yuhongli/src/arrowdev/arrow/tests/functional/data/crt_test/testApp"
+exec('sed -i -E "s/\\"baseUrl.: .*/\\"baseUrl\\":\\"$URL\\"/" crt_*.json', envObj, function(error, stdout, stderr){
         if (error) {
             console.log("===the error is ===" + error + "\n");
             console.log("replace the url failed, please replace them manually");
@@ -52,7 +53,7 @@ exec('sed -i -e "s/http:.*testApp/\"${URL}\"/g" crt*.json', envObj, function(err
         }
     });
 
-exec('rm  crt*.json-e', function(error, stdout, stderr) {
+exec('rm  crt*.json-E', function(error, stdout, stderr) {
         if (error) {
            console.log("rm the temp files failed, please remove the temp files *.json-e manually");
            }
