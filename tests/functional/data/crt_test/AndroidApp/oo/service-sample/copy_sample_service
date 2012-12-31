@@ -1,0 +1,42 @@
+#!/bin/bash
+# Use service sample.
+# Call ./copy_sample_service from local path
+# author: Shijia Zhang
+#  Copyright Yahoo! Inc. 2012. All rights reserved.
+
+SERVICE_DIR="service"
+IDL_DIR="IDL"
+JS_DIR="sample"
+
+TARGET_SERVICE_DIR="../src/com/yahoo/platform/ychrome/service/"
+TARGET_JS_DIR="../assets/packages/"
+
+# Copy Service and ServiceInterface JAVA files to 
+# ../src/com/yahoo/platform/ychrome/service/
+echo "Copy Service and ServiceInterface JAVA files to $TARGET_SERVICE_DIR"
+if [ -d $SERVICE_DIR ]
+then
+    for d in $SERVICE_DIR/
+    do
+        cp -Rf $d $TARGET_SERVICE_DIR
+    done
+fi
+
+# Copy IDL files to
+# ../src/com/yahoo/platform/ychrome/service/
+echo "Copy IDL files to $TARGET_SERVICE_DIR"
+if [ -d $IDL_DIR ]
+then
+    cp -Rf $IDL_DIR $TARGET_SERVICE_DIR
+fi
+
+# Copy HTML and JS test files to
+# ../assets/packages/
+echo "Copy HTML and JS test files to $TARGET_JS_DIR"
+if [ -d $JS_DIR ]
+then
+    for d in $JS_DIR/
+    do
+        cp -Rf $d $TARGET_JS_DIR
+    done
+fi

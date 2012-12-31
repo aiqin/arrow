@@ -1,0 +1,15 @@
+{
+    "description": "Configured by CocktailsIDE",
+    "application_snapshot_name": "oo",
+    "application_local_version": "ReservedVersion",
+    "application_snapshot_tag": "2012_12_10_16_22_11_852",
+    "sPackage": {
+        "environment": "dev",
+        "query_request": "http://10.0.2.2:3000/pkgUpdater/v1/snapshots/%1$s/tags/%2$s/queryUpdate?local_version=%3$s",
+        "fast_update_request": "http://10.0.2.2:3000/pkgUpdater/v1/snapshots/%1$s/tags/%2$s/fastUpdate?local_version=%3$s&local_hash=%5$s&required_packages=%4$s",
+        "update_request": "http://10.0.2.2:3000/pkgUpdater/v1/snapshots/%1$s/tags/%2$s/update?local_version=%3$s",
+        "package_storage_server": "http://10.0.2.2:3000/pkgServer/v1/",
+        "initialQueryWaitSeconds": 10,
+        "updateQueryIntervalSeconds": 20
+    }
+}
