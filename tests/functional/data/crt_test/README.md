@@ -11,12 +11,15 @@ run "./replaceUrl.js --url=<your url>" to replace all the url in the *descriptor
 **Pre-conditions:**
  1. Installed ADT, refer to http://developer.android.com/sdk/installing/bundle.html 
  2. A android emulator with SD card, API Level =14 and platform 4.0, checked the avds you have by command 'android avd'
+ 3. update the ip address in the app's each .html file, for example ./AndroidApp/oo/assets/packages/yahoo.application.oo/*.html
 
 **Step1**: Launch shanghai server by 'shanghai-server --host={ip}', and open 'http://localhost:9000' to open the shanghai server remote console.
 
 **Step2**: Launch arrow server by 'arrow_server'
 
 **Step3**: Open Eclipse, right click on blank in 'Project Explorer', select Import -> Existing Projects into Workspace-> select {arrow install folder}/tests/functional/data/crt_test/AndroidApp/oo
+or 
+cd your project root directory, run "android update project --path . --subprojects  --target 1 --name oo" then "ant clean debug", "cd bin", "android install *.apk"
 
 **Step4**: Open terminal and run 'adb emulator -avd {avd name}', check device status by 'adb devices'
 
