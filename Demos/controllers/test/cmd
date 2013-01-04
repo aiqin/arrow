@@ -1,2 +1,0 @@
-arrow crt_descriptor.json --driver=crt --logLevel=debug
-arrow --lib=/Users/aiqin/github/local/aiqin/arrow/Demos/unit_test/src/greeter.js --driver=crt /Users/aiqin/github/local/aiqin/arrow/Demos/unit_test/test/test-unit.js
