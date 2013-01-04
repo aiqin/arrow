@@ -351,7 +351,7 @@ YUI.add('crt-tests', function (Y, NAME) {
                               "ARROW.actionScript = " + "\"\";" + 
                               "ARROW.onSeeded = function() { " + runnerJs + " };" + seedJs;
 
-                          fs.writeFileSync("/Users/aiqin/expDJ.out",expectResult);
+                         // fs.writeFileSync("/Users/aiqin/expDJ.out",expectResult);
                           Y.Assert.areEqual(result, expectResult);
                       },
 
