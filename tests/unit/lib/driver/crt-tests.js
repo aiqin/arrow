@@ -829,7 +829,7 @@ YUI.add('crt-tests', function (Y, NAME) {
              'test getCrtUrl when the url is a valid http url for browser test' : function(){
                  var driver = new driverClass({},{}), result = "";
 
-                 result = driver.getCrtUrl("http://testpage");
+                 result = driver.getCrtUrl("  http://testpage   ");
                  Y.Assert.areEqual(result, "http://testpage");
              },
 
