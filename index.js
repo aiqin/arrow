@@ -95,7 +95,7 @@ function showHelp() {
         "        --dimensions : (optional) a custom dimension file for defining ycb contexts" + "\n\n" +
         "        --context : (optional) name of ycb context" + "\n\n" +
         "        --seleniumHost : (optional) override selenium host url (example: --seleniumHost=http://host.com:port/wd/hub)" + "\n\n" +
-        "        --crtTestServer : (optional) override crtTestServer host url (example: --crtTestServer=http://host.com:port/shanghai)" + "\n\n" +
+        "        --crtTestServer : (optional) override crtTestServer host url (example: --crtTestServer=http://host.com:port/shanghai), the default is http://localhost:9000/shanghai" + "\n\n" + 
         "        --capabilities : (optional) the name of a json file containing webdriver capabilities required by your project" +
         "        --startProxyServer : (optional) true/false. Starts a proxy server for all intercepting all selenium browser calls" +
         "        --routerProxyConfig : (optional) filePath. Expects a Json file, allows users to modify host and headers for all calls being made by browser. Also supports recording of select url calls." + "\n" +

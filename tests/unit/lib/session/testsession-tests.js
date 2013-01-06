@@ -32,6 +32,18 @@ YUI.add('testsession-tests', function (Y) {
     }));
 
     suite.add(new Y.Test.Case({
+       name : "call testSessions setup with mix upper lowercase in args",
+
+       testSetupWithMixCaseParams : function () {
+           var ts = new testSession({},{driver:"  Crt",controller: "  cRt "},null);
+           ts.setup(function(){
+               A.areEqual(ts.driverName, "crt");
+               A.areEqual(ts.controller, "crt");
+               });
+       }
+    }));
+
+    suite.add(new Y.Test.Case({
 
         name : "Call testSessions setup with custom controller",
 

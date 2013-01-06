@@ -36,6 +36,7 @@ npm install -g yahoo-arrow
 * **--dimension** a custom dimension file for defining ycb contexts
 * **--context** name of ycb context
 * **--seleniumHost** : (optional) override selenium host url (example: --seleniumHost=http://host.com:port/wd/hub)
+* **--crtTestServer** : (optional) override crtTestServer host url (example: --crtTestServer=http://host.com:port/shanghai), the default is http://localhost:9000/shanghai
 * **--capabilities** : (optional) the name of a json file containing webdriver capabilities required by your project
 * **--startProxyServer** : (optional) true/false. Starts a proxy server, intercepting all selenium browser calls
 * **--routerProxyConfig** : (optional) filePath. Expects a Json file, allows users to modify host and headers for all calls being made by browser. Also supports recording of select url calls ( if you mark "record" : true)
@@ -108,6 +109,10 @@ arrow --page=http://www.hostname.com/testpage --lib=./test-lib.js --driver=selen
 arrow --controller=custom-controller.js --driver=selenium
 ```
 
+###Function test with crt web driver: 
+```
+arrow crt_descriptor.json --driver=crt
+```
 
 ##Arrow Dependencies
 
@@ -123,6 +128,7 @@ NPM Dependencies
 * **useragent** https://github.com/3rd-Eden/useragent
 * **istanbul** https://github.com/yahoo/istanbul
 * **uglify-js** https://github.com/mishoo/UglifyJS
+* **shanghai**
 
 NPM Dev Dependencies
 * **mockery** https://github.com/mfncooper/mockery
@@ -135,19 +141,18 @@ Apart from above mentioned npm modules, Arrow also relies on these two projects
 
 #For Arrow Developers
 1. install the arrow globle "sudo npm install yahoo-arrow -g" 
-2. clone the recent code to your local directory "git clone git@github.com:aiqin/arrow.git"
+2. clone the recent code to your local directory example: "git clone git@github.com:{yourid}/arrow.git"
 3. set the connection between arrow/arrow_server/arrow_selenium with the recent code
     sudo rm arrow
     sudo rm arrow_server
     sudo rm arrow_selenium
-    sudo ln -s /Users/aiqin/github/local/aiqin/arrow/index.js arrow
-    sudo ln -s /Users/aiqin/github/local/aiqin/arrow/arrow_server/server.js arrow_server
-    sudo ln -s /Users/aiqin/github/local/aiqin/arrow/arrow_selenium/selenium.js arrow_selenium
-4. on your git local repositry:
-    temp: run "sudo npm install shanghai -reg http://ynpm-registry.corp.yahoo.com:4080/" to get the shanghai dependency from yahoo internal npm 
+    sudo ln -s {localgitbase}/arrow/index.js arrow
+    sudo ln -s {localgitbase}/arrow/arrow_server/server.js arrow_server
+    sudo ln -s {localgitbase}/arrow/arrow_selenium/selenium.js arrow_selenium
+4. on your git local box:
     run "npm install ." to install all the dependencies
 5. bring up the arrow_server by "arrow_server"
-6. install shanghai server by "sudo npm install shanghai-server -reg http://ynpm-registry.corp.yahoo.com:4080/"
+6. install shanghai server by "sudo npm install shanghai-server"
 7. bring up the shanghai server by "cd ./node_modules/shanghai-server" and "node server.js --host=<your host ip address>"
 
 you can run your unit test/functional test/crt integration test according to the readme file
