@@ -649,3 +649,66 @@ report.json sample
           "testName":"Test YHOO Ticker"
       }
   ]
+
+
+Code Coverage
+-------------
+
+Arrow supports code coverage collection and coverage report generation in HTML format, in addition, Arrow remains code coverage data in lcov.info in local enviroment, if runing multiple test scripts files or test descriptors, Arrow will merge the individual code coverage into one coverage reportt.
+
+How To Use
+==========
+
+::
+
+  arrow <some test or test descriptor> --coverage
+
+
+you will see the code coverage report at the end of test, and report in HTML format is saved in coverage folder.
+
+Note Arrow does not save coverage data in json file in local path.
+
+For CRT App testing
+...................
+
+If you run test on CRT App and want to collect code coverage of CRT App, you need use istanbul to instrument JavaScripts files before you running the test.
+
+E.g. in a CRT Android application folder: `../arrow/tests/functional/data/crt_test/AndroidApp/oo/assets/packages/yahoo.application.oo`, we want to collect code coverage for `app-service.js`.
+
+::
+
+  mkdir tmp/
+  cp app-service.js tmp/
+  cd tmp/
+  istanbul instrument app-service.js -o ../app-service.js
+
+open `../app-service.js` and check whether it is instrumented, then install the Android app to emulator, and run test
+
+::
+
+  arrow crt_descriptor5.json --driver=crt --coverage
+
+to install `istanbul`, using:
+
+::
+
+  npm i istanbul
+
+For web application testing
+...........................
+
+If you run test on web application, and want to collect code coverage on browser side, you need add the dependency JavaScripts files in *--lib* option, Arrow will instrument these files automatically and send back the code coverage after test, e.g. 
+
+::
+
+  arrow test-func.js --lib=test-lib.js --driver=selenium --coverage --page=http://www.doctor46.com/tabview.html
+
+For node side testing
+.....................
+
+If you run test on node side, and want to collect code coverage, you need add the dependency JavaScripts files in *--lib* option, Arrow will instrument these files automatically and collect the code coverage after test, e.g. 
+
+::
+
+  arrow test-unit.js --lib=greeter.js --coverage
+
