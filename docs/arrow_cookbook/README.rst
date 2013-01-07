@@ -25,7 +25,7 @@ Options
   display installed arrow version
 --lib			comma separated list of js files needed by the test
 --page			path to the mock or production html page, for example: http://www.yahoo.com or mock.html
---driver		selenium|phantomjs|browser. (default: phantomjs)
+--driver		selenium|phantomjs|browser|crt. (default: phantomjs)
 --browser		firefox|chrome|opera|reuse.  Specify browser version with a hypen, ex.: firefox-4.0 or opera-11.0 (default: firefox)
 --controller		a custom controller javascript file
 --reuseSession		true/false. Specifies whether to run tests in existing sessions managed by selenium. Visit http://selenuim_host/wd/hub to setup sessions (default: false)
@@ -35,6 +35,7 @@ Options
 --logLevel		DEBUG|INFO|WARN|ERROR|FATAL (default: INFO)
 --dimension		a custom dimension file for defining ycb contexts
 --context		name of ycb context
+--crtTestServer		override crtTestServer host url (example: --crtTestServer=http://host.com:port/shanghai), default is http://localhost:9000/shanghai.
 
 
 Examples
@@ -59,6 +60,8 @@ Examples
 |  Custom controller:
 |    arrow --controller=custom-controller.js --driver=selenium
 
+|  Function test with crt driver:
+     arrow crt_descriptor.json --driver=crt
 
 See Also
 ========

@@ -351,6 +351,7 @@ The standard arrow config file looks like this
 
     // User default config
     config.seleniumHost = "";
+	config.crtTestServer = "http://localhost:9000/shanghai";
     //example: config.seleniumHost = "http://gridhost:port/wd/hub";
     config.context = "";
     config.defaultAppHost = "";
@@ -362,6 +363,7 @@ The standard arrow config file looks like this
     config.arrowModuleRoot = global.appRoot + "/";
     config.dimensions = config.arrowModuleRoot + "config/dimensions.json";
     config.defaultTestHost = config.arrowModuleRoot + "lib/client/testHost.html";
+	config.defaultCrtTestHost = config.arrowModuleRoot + "lib/client/crtTestHost.html";
     config.defaultAppSeed = "http://yui.yahooapis.com/3.6.0/build/yui/yui-min.js";
     config.testSeed = config.arrowModuleRoot + "lib/client/yuitest-seed.js";
     config.testRunner = config.arrowModuleRoot + "lib/client/yuitest-runner.js";
@@ -404,7 +406,7 @@ You can also **completely** override all configuration values by placing a confi
 Complex Test Scenarios
 ----------------------
 
-There are situations where the default arrow controller will not allow you to create the type of test scenario you require. If you recall, the default arrow controller assumes the page you load is the page under test. To solve this you can use a different arrow controller called *locator*. The *locator* controller allows you to navigate to the page under test by allowing you to perform actions such as clicking and typing.
+There are situations where the default arrow controller will not allow you to create the type of test scenario you require. If you recall, the default arrow controller assumes the page you load is the page under test. To solve this you can use a different arrow controller called *locator*. The *locator* controller allows you to navigate to the page under test by allowing you to perform actions such as clicking and typing. Further more, default and locator controller only let you test the web application, not CRT app. You can use *crt* controller to test the CRT App.
 
 The controller samples can be found `here. 
 
@@ -505,6 +507,10 @@ For example, you could have the following in your test descriptor
       }
   }
 
+The Crt Controller
+==================
+
+The Crt controller is exact the same as locator controller except Crt controller is used to test the CRT app on the mobile device. And the baseUrl is the CRT app index page url, not the browser's web url.
 
 Re-Using Browser Sessions
 -------------------------

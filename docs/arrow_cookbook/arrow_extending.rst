@@ -7,11 +7,11 @@ Extending Controllers
 
 Controllers are a very important part of Arrow. As described in the `architecture, <./arrow_intro.html#arrow-internals>`_ *controllers* are a way to *control* when and where your test will execute. By default, **Arrow** assumes you want to execute your test against the *page* or *HTTP End-Point* given in the **--page=** parameter.
 
-Additionally, Arrow provides the concept of `complex scenarios, <./arrow_in-depth.html#complex-test-scenarios>`_ you can create a *scenario* using a combination of the *default* and the `locator controller. <./arrow_in-depth.html#the-locator-controller>`_
+Additionally, Arrow provides the concept of `complex scenarios, <./arrow_in-depth.html#complex-test-scenarios>`_ you can create a *scenario* using a combination of the *default*, *crt* and the `locator controller. <./arrow_in-depth.html#the-locator-controller>`_
 
 However, there may still be the case where Arrow's built-in controllers are not sufficient for your needs. In this case, a user can create their own **custom controllers** to satisfy their needs.
 
-All controllers, including *default* and *locator* extend from the same **controller** interface. The **controller** interface provides you the following methods:
+All controllers, including *default* , *crt* and *locator* extend from the same **controller** interface. The **controller** interface provides you the following methods:
 
 * setup
 * execute
