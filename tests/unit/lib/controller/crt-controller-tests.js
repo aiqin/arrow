@@ -4,7 +4,7 @@
  * See the accompanying LICENSE file for terms.
  */
 
-YUI.add('crt-tests', function(Y, NAME) {
+YUI.add('crt-controller-tests', function(Y, NAME) {
 
     var path = require('path'), arrowRoot = path.join(__dirname, '../../../..'), 
     crtController = require(arrowRoot + '/lib/controller/crt.js'), StubDriver = require(arrowRoot + '/tests/unit/stub/driver.js');
