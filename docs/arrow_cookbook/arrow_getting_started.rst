@@ -151,7 +151,7 @@ To start Selenium Server using chromedriver and default Firefox profile use
 
     java -Dwebdriver.chrome.driver=./chromedriver -Dwebdriver.firefox.profile=default -jar selenium-server-standalone-2.xx.0.jar
 
-CRT Test Server
+CRT Test Server (i.e. Shanghai Server)
 ---------------
 
 Arrow uses CRT Test Server to execute all CRT app tests. CRT test server should run on a machine which can be accessed by arrow and the CRT app. 
@@ -172,7 +172,7 @@ To start CRT Test Server you simply need to do the following:
 
   shanghai-server --host=<your ip address>
 
-Note CRT Test Server is **NOT** required for Arrow to work. If you don't test the CRT app, shanghai server is not needed.
+Note CRT Test Server is **NOT** required for Arrow to work. If you don't test the CRT app, CRT Test Server is not needed.
 
 .. _Verification:
 

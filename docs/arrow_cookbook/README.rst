@@ -26,7 +26,8 @@ Options
 --lib			comma separated list of js files needed by the test
 --page			path to the mock or production html page, for example: http://www.yahoo.com or mock.html
 --driver		selenium|phantomjs|browser|crt. (default: phantomjs)
---crtTestServer		override crtTestServer host url (example: --crtTestServer=http://host:port/shanghai), default is http://localhost:9000/shanghai.
+--crtTestServer
+  override crtTestServer host url (example: --crtTestServer=http://host:port/shanghai), default is http://localhost:9000/shanghai.
 --browser		firefox|chrome|opera|reuse.  Specify browser version with a hypen, ex.: firefox-4.0 or opera-11.0 (default: firefox)
 --controller		a custom controller javascript file
 --reuseSession		true/false. Specifies whether to run tests in existing sessions managed by selenium. Visit http://selenuim_host/wd/hub to setup sessions (default: false)

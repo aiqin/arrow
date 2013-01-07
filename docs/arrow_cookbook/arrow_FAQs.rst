@@ -115,7 +115,7 @@ Before run the CRT app test, you need regist the app to the crt test server. i.e
 
 Solution
 ========
-Manually or automatically launch your CRT app before testing.
+Manually or automatically launch your CRT app before testing. On browser, you input http://crt_test_server_host:port, and select the target drop list to see whether there is session id.
 
 How do I point Arrow to a Specific Selenium Server
 --------------------------------------------------
