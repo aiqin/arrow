@@ -7,17 +7,20 @@
 YUI.add('crt-controller-tests', function(Y, NAME) {
 
     var path = require('path'), arrowRoot = path.join(__dirname, '../../../..'), 
-    crtController = require(arrowRoot + '/lib/controller/crt.js'), StubDriver = require(arrowRoot + '/tests/unit/stub/driver.js');
-    StubWdApp = require(arrowRoot + '/tests/unit/stub/crtwebdriver.js');
-    suite = new Y.Test.Suite(NAME), A = Y.Assert, self = this;
+    crtController = require(arrowRoot + '/lib/controller/crt.js')
+    suite = new Y.Test.Suite(NAME), A = Y.Assert, driverClass = require(arrowRoot + '/lib/driver/crt.js'),self = this;
+
+    driverClass.wdAppPath = arrowRoot + '/tests/unit/stub/crtwebdriver.js';
 
     function validateLocator(sessionId, params) {
-        var wasCalled = false, config = {}, wdApp = new StubWdApp(), driver = new StubDriver(), crt;
-        driver.webdriver = new StubWdApp(self.config);
-        driver.webdriver.buildWebDriver(sessionId, function(msg){
-            console.log(msg);
-        });
-        crt = new crtController(config, params, driver);
+        var wasCalled = false,config, crt; 
+        config = {crtTestServer:"http://localhost:9000/shanghai"};
+        driver = new driverClass(config,{});
+        driver.sessionId=sessionId;
+        driver.start(function(msg){
+                           console.log(msg);
+                    });
+        crt = new crtController({}, params, driver);
         crt.execute(function(msg) {
             if (msg === null) {
                 self.callbackMsg = "null";
