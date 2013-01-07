@@ -147,6 +147,7 @@ You can tell Arrow to point to a specific CRT Test Server: Use the **--crtTestSe
 **Note** you need to include the **FULL** path to crt Test Server like this:
 
 ::
+
   crtTestServer=http://url.to.server:port/shanghai
 
 [ERROR] ArrowServer - <Buffer 65 78 65

@@ -156,7 +156,7 @@ CRT Test Server
 
 Arrow uses CRT Test Server to execute all CRT app tests. CRT test server should run on a machine which can be accessed by arrow and the CRT app. 
 
-Start CRT Server
+Start CRT Test Server
 ================
 
 To start CRT Test Server you simply need to do the following:

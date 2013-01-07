@@ -61,7 +61,7 @@ Examples
 |    arrow --controller=custom-controller.js --driver=selenium
 
 |  Function test with crt driver:
-     arrow crt_descriptor.json --driver=crt
+|    arrow crt_descriptor.json --driver=crt
 
 See Also
 ========

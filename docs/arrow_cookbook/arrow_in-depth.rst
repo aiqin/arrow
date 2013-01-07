@@ -351,7 +351,7 @@ The standard arrow config file looks like this
 
     // User default config
     config.seleniumHost = "";
-	config.crtTestServer = "http://localhost:9000/shanghai";
+    config.crtTestServer = "http://localhost:9000/shanghai";
     //example: config.seleniumHost = "http://gridhost:port/wd/hub";
     config.context = "";
     config.defaultAppHost = "";
@@ -363,7 +363,7 @@ The standard arrow config file looks like this
     config.arrowModuleRoot = global.appRoot + "/";
     config.dimensions = config.arrowModuleRoot + "config/dimensions.json";
     config.defaultTestHost = config.arrowModuleRoot + "lib/client/testHost.html";
-	config.defaultCrtTestHost = config.arrowModuleRoot + "lib/client/crtTestHost.html";
+    config.defaultCrtTestHost = config.arrowModuleRoot + "lib/client/crtTestHost.html";
     config.defaultAppSeed = "http://yui.yahooapis.com/3.6.0/build/yui/yui-min.js";
     config.testSeed = config.arrowModuleRoot + "lib/client/yuitest-seed.js";
     config.testRunner = config.arrowModuleRoot + "lib/client/yuitest-runner.js";
