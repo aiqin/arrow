@@ -564,7 +564,7 @@ Once Selenium is started, the same steps for *reusing* sessions apply.
 Parallelism
 -----------
 
-Arrow supports Parallel execution of tests. By default **parallel** is set to *false*. You can update the value to the *maximum number* of threads you want to use. Keep in mind Arrow will try to create one Browser Session **PER** parallel count. It is important that you have enough system resources to support this
+Arrow supports Parallel execution of tests. By default **parallel** is set to *false*. You can update the value to the *maximum number* of threads you want to use. Keep in mind Arrow will try to create one Browser Session **PER** parallel count. It is important that you have enough system resources to support this. Note CRT test driver doesn't support **parallel**
 
 How To Use
 ==========
