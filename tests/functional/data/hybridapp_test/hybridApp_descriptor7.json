@@ -1,0 +1,63 @@
+[
+    {
+        "settings": [ "master" ],
+        "name": "controllers",
+        "config": {
+            "baseUrl": "crt://yahoo.com/yahoo.application.oo"
+        },
+        "dataprovider" : {
+            "Test hybridApp Controller" : {
+                "group" : "func",
+                "params" :{
+                 "scenario": [
+                            {
+                                "page" : "$$config.baseUrl$$/index.html?test=1"
+                            },
+                            {
+                                "controller": "hybridApp",
+                                "params" : {
+                                    "using" : "link",
+                                    "value" : "Inner page",
+                                    "click" : true
+                                }
+                            },
+                            {
+                                "test": "shanghai-func.js",
+                                "h1Value": "Hello inner page",
+                                "linkValue": "Back to main page"
+                            }
+                    ]
+                   
+                }
+            },
+             "Test hybridApp Controller 2" : {
+                "group" : "func",
+                "params" :{
+                 "scenario": [
+                            {
+                                "page" : "$$config.baseUrl$$/inner.html?test=1"
+                            },
+                            {
+                                "controller": "hybridApp",
+                                "params" : {
+                                    "using" : "xpath",
+                                    "value" : "//a[@id='testlink']",
+                                    "click" : true
+                                }
+                            },
+                            {
+                                "test": "shanghai-func.js",
+                                "h1Value": "hello from foo!",
+                                "linkValue": "Inner page"
+                            }
+                    ]
+                   
+                }
+            }
+        }
+    },
+    {
+        "settings": [ "environment:development" ]
+    }
+]
+

@@ -36,7 +36,7 @@ npm install -g yahoo-arrow
 * **--dimension** a custom dimension file for defining ycb contexts
 * **--context** name of ycb context
 * **--seleniumHost** : (optional) override selenium host url (example: --seleniumHost=http://host.com:port/wd/hub)
-* **--crtTestServer** : (optional) override crtTestServer host url (example: --crtTestServer=http://host.com:port/shanghai), the default is http://localhost:9000/shanghai
+* **--hybridAppTestServer** : (optional) override hybridAppTestServer host url (example: --hybridAppTestServer=http://host.com:port/shanghai), the default is http://localhost:9000/shanghai
 * **--capabilities** : (optional) the name of a json file containing webdriver capabilities required by your project
 * **--startProxyServer** : (optional) true/false. Starts a proxy server, intercepting all selenium browser calls
 * **--routerProxyConfig** : (optional) filePath. Expects a Json file, allows users to modify host and headers for all calls being made by browser. Also supports recording of select url calls ( if you mark "record" : true)
@@ -109,9 +109,9 @@ arrow --page=http://www.hostname.com/testpage --lib=./test-lib.js --driver=selen
 arrow --controller=custom-controller.js --driver=selenium
 ```
 
-###Function test with crt web driver: 
+###Function test with hybridApp web driver: 
 ```
-arrow crt_descriptor.json --driver=crt
+arrow hybridApp_descriptor.json --driver=hybridApp
 ```
 
 ##Arrow Dependencies
@@ -155,5 +155,5 @@ Apart from above mentioned npm modules, Arrow also relies on these two projects
 6. install shanghai server by "sudo npm install shanghai-server"
 7. bring up the shanghai server by "cd ./node_modules/shanghai-server" and "node server.js --host=<your host ip address>"
 
-you can run your unit test/functional test/crt integration test according to the readme file
+you can run your unit test/functional test/hybridApp integration test according to the readme file
 

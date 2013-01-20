@@ -1,0 +1,6 @@
+# view AndroidManifest.xml #generated:34
+-keep class com.yahoo.platform.crt.activity.CocktailsRTActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:28
+-keep class com.yahoo.platform.crt.app.CocktailsRTBaseApplication { <init>(...); }
+

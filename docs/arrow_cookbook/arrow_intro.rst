@@ -15,7 +15,7 @@ Arrow's design is based on the idea that test purpose should not dictate how tes
 What can I do with Arrow?
 -------------------------
 
-The answer is simple, anything you can do with JS and NodeJS or Selenium, you can do with Arrow. In addition to Unit, Functional and Integration tests, you can also test WebServices using NodeJS and you can test CRT app with arrow too.
+The answer is simple, anything you can do with JS and NodeJS or Selenium, you can do with Arrow. In addition to Unit, Functional and Integration tests, you can also test WebServices using NodeJS and you can test hybridApp with arrow too.
 
 Arrow Internals
 ---------------
@@ -25,7 +25,7 @@ Arrow's architecture is very simple. It is made up of 5 main components
 Core components:
 
 * Test Session: Provides the mechanism for injecting tests onto a page.
-* Driver: In Arrow's terminology, this is what determines the driver of your tests. Which mechanism do you want injecting your tests. NodeJS, PhantomJS, CRT and Selenium are fully supported.
+* Driver: In Arrow's terminology, this is what determines the driver of your tests. Which mechanism do you want injecting your tests. NodeJS, PhantomJS, hybridApp and Selenium are fully supported.
 * Arrow Server: Arrow sever provides two very important functionalities. Firstly, it's a simple file server used to **serve** local mock pages when executing your tests using Selenium. Secondly, it is a reverse-proxy with a Web Driver implementation. This is used as a way to execute tests against browsers and devices not supported by Selenium. With Arrow Server running, **ANY** device can **register** itself with a given instance of Arrow Server, and said device and then be used as a test executor.
 
 User-facing Components:

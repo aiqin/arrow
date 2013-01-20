@@ -109,13 +109,13 @@ You need to start Arrow server like this
 
 Because arrow_server needs to KEEP running, start it on a different command prompt than the one you are using for testing
 
-Error: No crt sessions found, cannot run tests
+Error: No hybridApp sessions found, cannot run tests
 ---------------------------------------------------
-Before run the CRT app test, you need regist the app to the crt test server. i.e the App is launched on the simulator or real device, and the web view has been injected.
+Before run the hybridApp test, you need regist the app to the hybridApp test server. i.e the App is launched on the simulator or real device, and the web view has been injected.
 
 Solution
 ========
-Manually or automatically launch your CRT app before testing. On browser, you input http://crt_test_server_host:port, and select the target drop list to see whether there is session id.
+Manually or automatically launch your hybridApp before testing. On browser, you input http://hybridApp_test_server_host:port, and select the target drop list to see whether there is session id.
 
 How do I point Arrow to a Specific Selenium Server
 --------------------------------------------------
@@ -136,19 +136,19 @@ You can tell Arrow to point to a specific Selenium Host in two ways
 
   seleniumHost=http://url.to.server:port/wd/hub
 
-How do I point Arrow to a Specific CRT Test Server
+How do I point Arrow to a Specific hybridApp Test Server
 --------------------------------------------------
-There may be situatios where the CRT Test Server may not be running on the localhost.
+There may be situatios where the hybrid App Test Server may not be running on the localhost.
 
 Solution
 ========
-You can tell Arrow to point to a specific CRT Test Server: Use the **--crtTestServer** parameter in your command
+You can tell Arrow to point to a specific hybrid App Test Server: Use the **--hybridAppTestServer** parameter in your command
 
-**Note** you need to include the **FULL** path to crt Test Server like this:
+**Note** you need to include the **FULL** path to hybridApp Test Server like this:
 
 ::
 
-  crtTestServer=http://url.to.server:port/shanghai
+  hybridAppTestServer=http://url.to.server:port/shanghai
 
 [ERROR] ArrowServer - <Buffer 65 78 65
 --------------------------------------
@@ -167,7 +167,7 @@ Make sure you have `installed PhantomJS <./arrow_getting_started.html#mac-instal
 How can I use the Locator Controller to Login?
 ----------------------------------------------
 
-Built-in, Arrow comes with three controllers, default, crt and `locator <./arrow_in-depth.html#the-locator-controller>`_
+Built-in, Arrow comes with three controllers, default, hybridApp and `locator <./arrow_in-depth.html#the-locator-controller>`_
 
 Solution
 ========

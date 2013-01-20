@@ -1,0 +1,39 @@
+[
+    {
+        "settings": [ "master" ],
+        "name": "controllers",
+        "config": {
+            "baseUrl": "crt://yahoo.com/yahoo.application.oo"
+        },
+        "dataprovider" : {
+            "Test hybridApp Controller" : {
+                "group" : "func",
+                "params" :{
+                 "scenario": [
+                            {
+                                "page" : "$$config.baseUrl$$/index.html?test=1"
+                            },
+                            {
+                                "controller": "hybridApp",
+                                "params" : {
+                                    "using" : "xpath",
+                                    "value" : "//input[@id='text1']",
+                                    "text": "haham h"
+                                    
+                                }
+                            },
+                            {
+                                "test": "shanghai-func_text.js",
+                                "textValue": "haham h"
+                            }
+                    ]
+                   
+                }
+            }
+        }
+    },
+    {
+        "settings": [ "environment:development" ]
+    }
+]
+

@@ -351,7 +351,7 @@ The standard arrow config file looks like this
 
     // User default config
     config.seleniumHost = "";
-    config.crtTestServer = "http://localhost:9000/shanghai";
+    config.hybridAppTestServer = "http://localhost:9000/shanghai";
     //example: config.seleniumHost = "http://gridhost:port/wd/hub";
     config.context = "";
     config.defaultAppHost = "";
@@ -363,7 +363,7 @@ The standard arrow config file looks like this
     config.arrowModuleRoot = global.appRoot + "/";
     config.dimensions = config.arrowModuleRoot + "config/dimensions.json";
     config.defaultTestHost = config.arrowModuleRoot + "lib/client/testHost.html";
-    config.defaultCrtTestHost = config.arrowModuleRoot + "lib/client/crtTestHost.html";
+    config.defaultHybridAppTestHost = config.arrowModuleRoot + "lib/client/hybridAppTestHost.html";
     config.defaultAppSeed = "http://yui.yahooapis.com/3.6.0/build/yui/yui-min.js";
     config.testSeed = config.arrowModuleRoot + "lib/client/yuitest-seed.js";
     config.testRunner = config.arrowModuleRoot + "lib/client/yuitest-runner.js";
@@ -406,7 +406,7 @@ You can also **completely** override all configuration values by placing a confi
 Complex Test Scenarios
 ----------------------
 
-There are situations where the default arrow controller will not allow you to create the type of test scenario you require. If you recall, the default arrow controller assumes the page you load is the page under test. To solve this you can use a different arrow controller called *locator*. The *locator* controller allows you to navigate to the page under test by allowing you to perform actions such as clicking and typing. Further more, default and locator controller only let you test the web application, not CRT app. You can use *crt* controller to test the CRT App.
+There are situations where the default arrow controller will not allow you to create the type of test scenario you require. If you recall, the default arrow controller assumes the page you load is the page under test. To solve this you can use a different arrow controller called *locator*. The *locator* controller allows you to navigate to the page under test by allowing you to perform actions such as clicking and typing. Further more, default and locator controller only let you test the web application, not hybridApp. You can use *hybridApp* controller to test the hybridApp.
 
 The controller samples can be found `here. 
 
@@ -507,10 +507,10 @@ For example, you could have the following in your test descriptor
       }
   }
 
-The Crt Controller
+The HybridApp Controller
 ==================
 
-The Crt controller is exact the same as locator controller except Crt controller is used to test the CRT app on the mobile device. And the baseUrl is the CRT app index page url, not the browser's web url.
+The hybridApp controller is exact the same as locator controller except hybridApp controller is used to test the hybridApp on the mobile device. And the baseUrl is the hybridApp index page url, not the browser's web url.
 
 Re-Using Browser Sessions
 -------------------------
@@ -564,7 +564,7 @@ Once Selenium is started, the same steps for *reusing* sessions apply.
 Parallelism
 -----------
 
-Arrow supports Parallel execution of tests. By default **parallel** is set to *false*. You can update the value to the *maximum number* of threads you want to use. Keep in mind Arrow will try to create one Browser Session **PER** parallel count. It is important that you have enough system resources to support this. Note CRT test driver doesn't support **parallel**
+Arrow supports Parallel execution of tests. By default **parallel** is set to *false*. You can update the value to the *maximum number* of threads you want to use. Keep in mind Arrow will try to create one Browser Session **PER** parallel count. It is important that you have enough system resources to support this. Note hybridApp test driver doesn't support **parallel**
 
 How To Use
 ==========
@@ -668,12 +668,12 @@ you will see the code coverage report at the end of test, and report in HTML for
 
 Note Arrow does not save coverage data in json file in local path.
 
-For CRT App testing
+For hybridApp testing
 ...................
 
-If you run test on CRT App and want to collect code coverage of CRT App, you need use istanbul to instrument JavaScripts files before you running the test.
+If you run test on hybridApp and want to collect code coverage of hybridApp, you need use istanbul to instrument JavaScripts files before you running the test.
 
-E.g. in a CRT Android application folder: `../arrow/tests/functional/data/crt_test/AndroidApp/oo/assets/packages/yahoo.application.oo`, we want to collect code coverage for `app-service.js`.
+E.g. in a hybridApp Android application folder: `../arrow/tests/functional/data/hybridApp_test/AndroidApp/oo/assets/packages/yahoo.application.oo`, we want to collect code coverage for `app-service.js`.
 
 ::
 
@@ -686,7 +686,7 @@ open `../app-service.js` and check whether it is instrumented, then install the 
 
 ::
 
-  arrow crt_descriptor5.json --driver=crt --coverage
+  arrow hybridApp_descriptor5.json --driver=hybridApp --coverage
 
 to install `istanbul`, using:
 

@@ -1,0 +1,11 @@
+#!/bin/ksh
+arrowPath=`which arrow`;
+arrowLink=`ls -lrt $arrowPath | awk -F"->" '{print $2}'`;
+arrowStatus=${arrowLink/index.js/tmp/arrow_server.status};
+prefix=`cat $arrowStatus`;
+
+hybridAppTestServer=${prefix/%:?????/:9000/shanghai};
+echo "hybridAppTestServer is $hybridAppTestServer";
+
+arrow integration-test.js  --driver=hybridApp --hybridAppTestServer=$hybridAppTestServer --page=crt://yahoo.com/yahoo.application.ychromertApp/index.html --logLevel=trace
+arrow single.bridgebenchmark.js --lib=integration-tests-cfg.js,../yahoo.services.bridgebenchmark.tests/bridgebenchmark-integration-tests.js --driver=hybridApp --hybridAppTestServer=$hybridAppTestServer --page=crt://yahoo.com/yahoo.application.ychromertApp/index.html --logLevel=trace

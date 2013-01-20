@@ -47,7 +47,7 @@ var knownOpts = {
         "dimensions": [String, null],
         "capabilities": [String, null],
         "seleniumHost": [String, null],
-        "crtTestServer" : [String, null],
+        "hybridAppTestServer" : [String, null],
         "retryCount": [Number, null],
         "exitCode": Boolean,
         "color": Boolean,
@@ -83,7 +83,7 @@ function showHelp() {
         "        --lib : a comma seperated list of js files needed by the test" + "\n\n" +
         "        --page : (optional) path to the mock or production html page" + "\n" +
         "                   example: http://www.yahoo.com or mock.html" + "\n\n" +
-        "        --driver : (optional) one of selenium|nodejs|crt. (default: selenium)" + "\n\n" +
+        "        --driver : (optional) one of selenium|nodejs|hybridApp. (default: selenium)" + "\n\n" +
         "        --browser : (optional) a comma seperated list of browser names, optionally with a hypenated version number.\n" +
         "                      Example : 'firefox-12.0,chrome-10.0' or 'firefox,chrome' or 'firefox'. (default: firefox)" + "\n\n" +
         "        --parallel : (optional) test thread count. Determines how many tests to run in parallel for current session. (default: 1)\n" +
@@ -99,7 +99,7 @@ function showHelp() {
         "        --dimensions : (optional) a custom dimension file for defining ycb contexts" + "\n\n" +
         "        --context : (optional) name of ycb context" + "\n\n" +
         "        --seleniumHost : (optional) override selenium host url (example: --seleniumHost=http://host.com:port/wd/hub)" + "\n\n" +
-        "        --crtTestServer : (optional) override crtTestServer host url (example: --crtTestServer=http://host.com:port/shanghai), default is http://localhost:9000/shanghai" + "\n\n" + 
+        "        --hybridAppTestServer : (optional) override hybridAppTestServer host url (example: --hybridAppTestServer=http://host.com:port/shanghai), default is http://localhost:9000/shanghai" + "\n\n" + 
         "        --capabilities : (optional) the name of a json file containing webdriver capabilities required by your project" + "\n\n" +
         "        --startProxyServer : (optional) true/false. Starts a proxy server for all intercepting all selenium browser calls" + "\n\n" +
         "        --routerProxyConfig : (optional) filePath. Expects a Json file, allows users to modify host and headers for all calls being made by browser. Also supports recording of select url calls." + "\n" +
@@ -147,8 +147,8 @@ function showHelp() {
         "          arrow test-int.js --page=http://www.hostname.com/testpage --lib=./test-lib.js --driver=selenium" + "\n\n" +
         "        Custom controller: " + "\n" +
         "          arrow --controller=custom-controller.js --driver=selenium" + "\n\n" +
-        "        Function test with crt driver: \n" +
-        "          arrow crt_descriptor.json --driver=crt" + "\n\n");
+        "        Function test with hybridApp driver: \n" +
+        "          arrow hybridApp_descriptor.json --driver=hybridApp" + "\n\n");
 }
 
 if (argv.help) {

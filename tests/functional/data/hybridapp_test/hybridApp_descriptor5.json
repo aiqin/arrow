@@ -1,0 +1,39 @@
+[
+    {
+        "settings": [ "master" ],
+        "name": "controllers",
+        "config": {
+            "baseUrl": "crt://yahoo.com/yahoo.application.oo"
+        },
+        "dataprovider" : {
+            "Test hybridApp Controller" : {
+                "group" : "func",
+                "params" :{
+                 "scenario": [
+                            {
+                                "page" : "$$config.baseUrl$$/index.html?test=1"
+                            },
+                            {
+                                "controller": "hybridApp",
+                                "params" : {
+                                    "value" : "adjust2",
+                                    "click" : true,
+                                    "stay":true
+                                }
+                            },
+                            {
+                                "test": "shanghai-func.js",
+                                "h1Value": "hello from foo (second time)!",
+                                "linkValue": "Inner page"
+                            }
+                    ]
+                   
+                }
+            }
+        }
+    },
+    {
+        "settings": [ "environment:development" ]
+    }
+]
+

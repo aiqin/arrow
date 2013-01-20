@@ -35,10 +35,10 @@ YUI.add('testsession-tests', function (Y) {
        name : "call testSessions setup with mix upper lowercase in args",
 
        testSetupWithMixCaseParams : function () {
-           var ts = new testSession({},{driver:"  Crt",controller: "  cRt "},null);
+           var ts = new testSession({},{driver:"  HybridApp",controller: "  hyBridApp "},null);
            ts.setup(function(){
-               A.areEqual(ts.driverName, "crt");
-               A.areEqual(ts.controller, "crt");
+               A.areEqual(ts.driverName, "hybridapp");
+               A.areEqual(ts.controller, "hybridapp");
                });
        }
     }));

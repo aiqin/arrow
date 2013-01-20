@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<link rel='stylesheet' href="./css/styles.css">
+<script type="text/javascript">
+YUI_config = {
+    combine: false,
+    modules: {
+        'app-service': {
+            fullpath: './app-service.js',
+            requires: ['node']
+        },
+        'test-service': {
+            fullpath: './test-service.js',
+            requires: []
+        }
+    }
+};
+</script>
+<script src='http://yui.yahooapis.com/3.8.0/build/yui/yui-min.js'></script>
+</head>
+<body class='yui3-skin-sam'>
+    <h1>Hello world</h1>
+    <p>Mode: <b id='mode'>production</b></p>
+    <p><button id="adjust2" name="testbutton">Adjust header again!</button></p>
+    <input type="text" id="text1" />
+    <p>
+        <a href='inner.html?test=1' id=testlink>Inner page</a> 
+    </p>
+<script>
+    YUI().use('app-service', 'node', 'event', function (Y) {
+        Y.on('domready', function () {
+            Y.foo.adjustHeader();
+            Y.one('#adjust2').on('click', function () { Y.foo.adjustHeaderAgain(); });
+        });
+    });
+</script>
+</body>
+</html>
+
+<script>
+var curURL = window.location.href;
+var prefix = curURL.indexOf("arrow/tests/functional/");
+var injectURL = curURL.substr(0, prefix) + "arrow/lib/util/hybridappinjecttest.js";
+document.write('<script src="' + injectURL + '"></' + 'script>'); 
+</script>

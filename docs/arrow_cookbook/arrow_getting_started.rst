@@ -151,16 +151,16 @@ To start Selenium Server using chromedriver and default Firefox profile use
 
     java -Dwebdriver.chrome.driver=./chromedriver -Dwebdriver.firefox.profile=default -jar selenium-server-standalone-2.xx.0.jar
 
-CRT Test Server (i.e. Shanghai Server)
+hybridApp Test Server (i.e. Shanghai Server)
 ---------------
 
-Arrow uses CRT Test Server to execute all CRT app tests. CRT test server should run on a machine which can be accessed by arrow and the CRT app. 
+Arrow uses hybridApp Test Server to execute all hybridApp tests. hybridApp test server should run on a machine which can be accessed by arrow and the hybridApp. 
 
-Start CRT Test Server
+Start hybridApp Test Server
 ================
 
-To start CRT Test Server you simply need to do the following:
-1. Download the CRT Test Server package: 
+To start hybridApp Test Server you simply need to do the following:
+1. Download the hybridApp Test Server package: 
 
 ::
 
@@ -172,7 +172,7 @@ To start CRT Test Server you simply need to do the following:
 
   shanghai-server --host=<your ip address>
 
-Note CRT Test Server is **NOT** required for Arrow to work. If you don't test the CRT app, CRT Test Server is not needed.
+Note hybridApp Test Server is **NOT** required for Arrow to work. If you don't test the hybridApp, hybridApp Test Server is not needed.
 
 .. _Verification:
 
@@ -214,7 +214,7 @@ Check Arrow Help
      --dimensions : (optional) a custom dimension file for defining ycb contexts
      --context : (optional) name of ycb context
      --seleniumHost : (optional) override selenium host url (example: --seleniumHost=http://host.com:port/wd/hub)
-     --crtTestServer : (optional) override crtTestServer host url (example: --crtTestServer=http://host.com:port/shanghai), default is http://localhost:9000/shanghai
+     --hybridAppTestServer : (optional) override hybridAppTestServer host url (example: --hybridAppTestServer=http://host.com:port/shanghai), default is http://localhost:9000/shanghai
      --capabilities : (optional) the name of a json file containing webdriver capabilities required by your project
 
     EXAMPLES :
@@ -230,8 +230,8 @@ Check Arrow Help
        arrow test-int.js --page=http://www.hostname.com/testpage --lib=./test-lib.js --driver=selenium
      Custom controller:
        arrow --controller=custom-controller.js --driver=selenium
-     Function test with crt driver:
-       arrow crt_descriptor.json --driver=crt
+     Function test with hybridApp driver:
+       arrow hybridApp_descriptor.json --driver=hybridApp
 
 
 Check Arrow version
@@ -270,10 +270,10 @@ Though Selenium Server is NOT required, if you chose to run it, you can confirm 
 
 .. _Creating a test:
 
-Confirm CRT Test Server is Running
+Confirm hybridApp Test Server is Running
 ==================================
 
-Though CRT Test Server is NOT required, if you chose to run it, you can confirm it's running successfully like this:
+Though hybridApp Test Server is NOT required, if you chose to run it, you can confirm it's running successfully like this:
 
 1. From a browser, go to: http://host.or.url:port or http://localhost:9000
 2. you should open a webpage 

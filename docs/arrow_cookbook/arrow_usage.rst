@@ -10,7 +10,7 @@ Arrow Usage
 --version		display installed arrow version
 --lib			comma separated list of js files needed by the test
 --page			(optional) path to the mock or production html page, for example: http://www.yahoo.com or mock.html
---driver		(optional) selenium|phantomjs|browser|crt, default: phantomjs
+--driver		(optional) selenium|phantomjs|browser|hybridApp, default: phantomjs
 --browser		(optional) firefox|chrome|opera|reuse, default: firefox
 --controller		(optional) a custom controller javascript file
 --reuseSession		(optional) true, Used to run tests in existing sessions managed by selenium. Visit http://selenuim_host/wd/hub to setup sessions.
@@ -20,7 +20,7 @@ Arrow Usage
 --logLevel		(optional) DEBUG|INFO|WARN|ERROR|FATAL, default: INFO
 --dimension		(optional) a custom dimension file for defining ycb contexts
 --context		(optional) name of ycb context
---crtTestServer		(optional) override crtTestServer host url (example: --crtTestServer=http://host.com:port/shanghai), default is http://localhost:9000/shanghai
+--hybridAppTestServer		(optional) override hybridAppTestServer host url (example: --hybridAppTestServer=http://host.com:port/shanghai), default is http://localhost:9000/shanghai
 
 
 
@@ -46,6 +46,6 @@ Arrow Usage
   Custom controller: 
     arrow   --controller=custom-controller.js   --driver=selenium
 
-  Function test with crt driver:
-    arrow crt_descriptor.json --driver=crt
+  Function test with hybridApp driver:
+    arrow hybridApp_descriptor.json --driver=hybridApp
 
